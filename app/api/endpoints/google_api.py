@@ -29,12 +29,12 @@ async def get_report(
                           get_projects_by_completion_rate(
                               session))
 
-    spreadsheetid = await spreadsheets_create(wrapper_services)
-    await set_user_permissions(spreadsheetid, wrapper_services)
+    spreadsheet_id = await spreadsheets_create(wrapper_services)
+    await set_user_permissions(spreadsheet_id, wrapper_services)
     await spreadsheets_update_value(
-        spreadsheetid, project_list, wrapper_services
+        spreadsheet_id, project_list, wrapper_services
     )
 
     return {
-        "report": f"https://docs.google.com/spreadsheets/d/{spreadsheetid}"
+        "report": f"https://docs.google.com/spreadsheets/d/{spreadsheet_id}"
     }
